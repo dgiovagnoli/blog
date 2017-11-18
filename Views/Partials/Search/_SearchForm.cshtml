@@ -1,0 +1,112 @@
+﻿@model CSharpProject.Models.SearchViewModel
+
+@*@using (Html.BeginUmbracoForm("SubmitSearchForm", "Search", FormMethod.Post))*@
+@using (Ajax.BeginForm("SubmitSearchForm", "Search", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "search-results"
+}))
+{
+    @Html.HiddenFor(m => m.DocTypeAliases)
+    @Html.HiddenFor(m => m.FieldPropertyAliases)
+    @Html.HiddenFor(m => m.PageSize)
+    @Html.HiddenFor(m => m.PagingGroupSize)
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-md-4">
+                <div class="form-group">
+                    <div class="group">
+                        <label for="SearchTerm">Search Term</label>
+                    </div>
+                    <div class="group">
+                        @Html.TextBoxFor(m => m.SearchTerm, new { placeholder = "Search..." })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <div class="form-group">
+                    <label for="category">Filter Search</label>
+                    <div class="group">
+
+                        <select name="Category" id="Category">
+
+                            <option value=""> Search In All Categories </option>
+                            <option value="Nature"> Nature </option>
+                            <option value="City"> City </option>
+
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-2 col-md-1" style="margin-top: 30px; padding: 15px;">
+               <button style="background-color: cornflowerblue" id="submit-button"><span  ><i  style="color: white;" class="fa fa-search"></i></span></button>
+
+                
+            </div>
+        </div>
+                            
+                              
+
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="search-results">
+                        @{ Html.RenderAction("RenderSearchResults", "Search", new { Model = Model.SearchResults });}
+                    </div>
+                </div>
+                <!-- Widgets -->
+                <div class="col-md-4 extra-gutter-left">
+
+                    <style>
+                        .cat_item {
+                            background: #f5f5f5;
+                            border-radius: 4px;
+                            color: #888;
+                            display: inline-block;
+                            padding: 5px 15px;
+                            margin: 5px;
+                        }
+                    </style>
+
+                    <div class="widget" style="background-color: #e8e8e8;  margin-top: 30px; margin-bottom: 30px;">
+                        <h6 style="padding: 20px;">View All of Category:</h6>
+
+                        <ul class="blog_category">
+                            <a class="cat_item" href="/search/?query=Nature">Nature</a>
+                            <a class="cat_item" href="/search/?query=City">City</a>
+                        </ul>
+
+                        <br>
+                    </div>
+
+                    <div class="widget">
+                        <h4>Social</h4>
+                        <ul class="social-icons">
+                            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+                            <li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="margin-bottom-40"></div>
+                </div>
+
+                <!-- Widgets / End -->
+            </div>
+        </div>
+    </div>
+       
+
+}
+
+

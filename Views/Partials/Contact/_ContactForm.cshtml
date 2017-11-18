@@ -1,0 +1,58 @@
+﻿@inherits UmbracoViewPage<ContactViewModel>
+
+@using CSharpProject.Models
+
+
+<div id="form-outer">
+    @using (Ajax.BeginForm("SubmitForm", "Contact", new AjaxOptions()
+    {
+        UpdateTargetId = "form-result",
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "contactForm.showResult",
+        OnFailure = "contactForm.showResult",
+
+    }, new { id = "contact-form" }))
+    {
+    		<!-- Contact Form -->
+        <div class="col-md-9">
+
+            <section id="contact">
+                <h4 class="headline with-border margin-top-10 margin-bottom-35">Let’s get in touch</h4>
+
+                <div id="contact-message"></div>
+
+                
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                @Html.TextBoxFor(m => m.Name, new { placeholder = "Name" })
+                                @Html.ValidationMessageFor(m => m.Name)
+
+                            </div>
+
+                            <div>
+                                @Html.TextBoxFor(m => m.Email, new { placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                        </div>
+
+                       
+                    </div>
+
+                    <div>
+                        @Html.TextAreaFor(m => m.Message, new { placeholder = "Message", rows = "4" })
+                        @Html.ValidationMessageFor(m => m.Message)
+                    </div>
+
+                    <input type="submit" class="contact-submit" id="submit" value="Submit" />
+
+            </section>
+        </div>
+
+
+        <!-- Container / End -->
+    }
+</div>
+<div id="form-result"></div>

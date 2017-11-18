@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<!-- Titlebar
+        ================================================== -->
+<div id="titlebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2>@Umbraco.Field("pageTitle", altFieldAlias: "pageName")</h2>
+                <h6>@Umbraco.Field("pageSubtitle")</h6>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li>@Umbraco.Field("pageTitle", altFieldAlias:"pageName")</li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</div>

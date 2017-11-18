@@ -1,0 +1,36 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "WebBase.cshtml";
+}
+
+@{ Html.RenderPartial("SiteLayout/_Titlebar");  }
+<!-- Contact
+================================================== -->
+<!-- Container / Start -->
+<div class="container">
+
+    
+
+    <div class="row">
+
+        <!-- Contact Details -->
+        <div class="col-md-3">
+            <!-- text box -->
+            <div class="sidebar-textbox">
+                <h4>Our Info</h4>
+                E-Mail: <span>ontheflycode@gmail.com</span> <br>
+            </div>
+
+            <ul class="social-icons margin-bottom-30">
+                <li><a class="github" href="http://github.com/dgiovagnoli"><i class="icon-github"></i></a></li>
+                
+               
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        @{ Html.RenderAction("RenderForm", "Contact"); }
+    </div>
+
+</div>
+<!-- Container / End -->

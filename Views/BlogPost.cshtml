@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "WebBase.cshtml";
+}
+
+<!-- Content
+================================================== -->
+
+@{ Html.RenderPartial("SiteLayout/_Titlebar");  }
+
+
+<div class="container">
+    <div class="row sticky-wrapper">
+        @CurrentPage.GetGridHtml("contentGrid", "bootstrap3")
+    </div>
+    
+</div>
+
+
+

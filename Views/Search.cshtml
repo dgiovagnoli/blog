@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = "WebBase.cshtml";
+}
+
+@{ Html.RenderPartial("SiteLayout/_Titlebar");  }                                
+
+@{ Html.RenderAction("RenderSearchForm", "Search", new { docTypeAliases = "blogPost,videoPost", fieldPropertyAliases = "articleIntro,category,nodeName,metaName,metaKeyWords,metaDescription,contentGrid", pageSize = 1, pagingGroupSize = 3 }); }
+   

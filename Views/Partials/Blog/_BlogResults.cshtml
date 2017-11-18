@@ -1,0 +1,120 @@
+﻿@inherits UmbracoViewPage<CSharpProject.Models.SearchResultsModel>
+
+
+
+
+@if (Model != null)
+            {
+                if (Model.HasResults)
+                {
+                    <p> Total of @Model.TotalItemCount Blog Post@(Model.TotalItemCount != 1 ? "s" : null) listed:</p>
+
+                    <h3 class="headline centered with-border margin-top-10"></h3>
+
+                        @RenderPagingButtons(Model.PagingBounds, Model.PageNumber, Model.PageCount)
+
+                <!-- Blog Posts -->
+
+
+        foreach (IPublishedContent result in Model.Results)
+        {
+            var cropUrl = result.GetPropertyValue<IPublishedContent>("articleImage").Url + "?width=840&height=430&mode=crop&anchor=center";
+            var smallCropUrl = result.GetPropertyValue<IPublishedContent>("articleImage").Url + "?width=840&height=430&mode=crop&anchor=center";
+            var introduction = (result.GetPropertyValue<string>("articleIntro"));
+
+
+            <div id="pagination">
+
+                <div class="post-container margin-bottom-30">
+                    <div class="post-img"><a href="@result.Url" class="img-hover"><img src="@cropUrl" alt="@result.Name" style="padding:10px; border: 5px solid #f5f5f5"></a></div>
+                    <div class="post-content no-border">
+                        <a href="@result.Url"><h3>@result.Name</h3></a>
+                        <div class="meta-tags">
+                            <!--<span>March 10, 2015</span>-->
+                            <!--<span><a href="#">0 Comments</a></span>-->
+                        </div>
+                        <p>@introduction</p>
+                        <a class="button" href="@result.Url">Read More</a>
+                        <h3 class="headline centered with-border margin-bottom-0">   </h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+
+
+    }
+    else
+    {
+        <p>No entries found.</p>
+    }
+}
+
+
+        @if (Model != null)
+        {
+            @RenderPagingButtons(Model.PagingBounds, Model.PageNumber, Model.PageCount)
+        }
+
+        @helper RenderPagingButtons(CSharpProject.Models.PagingBoundsModel pagingBounds, int pageNumber, int pageCount)
+        {
+            <div class="row">
+                <div id="pagination">
+                    <div class="col-md-8" style="">
+                        <div class="pagination-container">
+                            <nav class="pagination">
+                                <ul>
+
+
+                                    @if (pagingBounds.StartPage != pagingBounds.EndPage)
+                                    {
+                                        for (int i = pagingBounds.StartPage; i <= pagingBounds.EndPage; i++)
+                                        {
+                                            <li>
+                                                <button name="page-@i" class="@(i == pageNumber ? "current-page" : null)">@i</button>
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                            </nav>
+
+                            <nav class="pagination-next-prev">
+                                <ul>
+
+                                    @if (pagingBounds.ShowFirstButton)
+                                    {
+                                        <li>
+                                            <button class="prev" name="page-1">First</button>
+                                        </li>
+                                    }
+
+                                    @if (pageNumber > 1)
+                                    {
+                                        <li><button class="prev" name="page-@(pageNumber - 1)">Prev</button></li>
+                                    }
+
+
+
+
+                                    @if (pageNumber < pageCount)
+                                    {
+                                        <li><button class="next" name="page-@(pageNumber + 1)">Next</button></li>
+                                    }
+                                    @if (pagingBounds.ShowLastButton)
+                                    {
+                                        <li><button class="next" name="page-@(pageCount)">Last</button></li>
+                                    }
+
+
+                                </ul>
+                            </nav>
+
+                        </div>
+                        <!-- end Pagination -->
+                    </div>
+                </div>
+            </div>
+}

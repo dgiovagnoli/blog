@@ -1,0 +1,65 @@
+﻿@model List<CSharpProject.Models.BlogPreview>
+
+<!-- Recent Articles -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="headline with-border margin-bottom-30">Recent Articles</h3>
+            </div>
+        </div>
+
+        <div class="row" style="">
+            <div class="col-md-4" style="">
+                <div class="post-container margin-bottom-30">
+                    <div class="post-img"><a href="@Model[0].LinkUrl" class="img-hover"><img src="@Model[0].OriginalImage" alt="@Model[0].Name" style="padding:10px; border: 5px solid #f5f5f5"></a></div>
+                    <div class="post-content no-border">
+                        <a href="@Model[0].LinkUrl"><h3>@Model[0].Name</h3></a>
+                        <div class="meta-tags">
+                          
+                        </div>
+                        <p>@Model[0].Introduction</p>
+                        <a class="button" href="@Model[0].LinkUrl">Read More</a>
+                        <h3 class="headline centered with-border margin-bottom-0">   </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" style="">
+                <div class="post-container margin-bottom-30">
+                    <div class="post-img"><a href="@Model[1].LinkUrl" class="img-hover"><img src="@Model[1].OriginalImage" alt="@Model[1].Name" style="padding:10px; border: 5px solid #f5f5f5"></a></div>
+                    <div class="post-content no-border">
+                        <a href="@Model[1].LinkUrl"><h3>@Model[1].Name</h3></a>
+                        <div class="meta-tags">
+                   
+                        </div>
+                        <p>@Model[1].Introduction</p>
+                        <a class="button" href="@Model[1].LinkUrl">Read More</a>
+                        <h3 class="headline centered with-border margin-bottom-0">   </h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" style="">
+                <div class="post-container margin-bottom-30">
+                    <div class="post-img"><a href="@Model[2].LinkUrl" class="img-hover"><img src="@Model[2].OriginalImage" alt="@Model[2].Name" style="padding:10px; border: 5px solid #f5f5f5"></a></div>
+                    <div class="post-content no-border">
+                        <a href="@Model[2].LinkUrl"><h3>@Model[2].Name</h3></a>
+                        <div class="meta-tags">
+                            
+                        </div>
+                        <p>@Model[0].Introduction</p>
+                        <a class="button" href="@Model[2].LinkUrl">Read More</a>
+                        <h3 class="headline centered with-border margin-bottom-0">   </h3>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
